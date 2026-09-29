@@ -8,13 +8,15 @@ import DataBUS.neotomaHelpers as nh
 from DataBUS.neotomaHelpers.logging_dict import logging_response
 
 load_dotenv()
-connection = json.loads(os.getenv('PGDB_TANK'))
+connection = json.loads(os.getenv('PGDB_LOCAL'))
 
 # ── Configure your data pairs here ────────────────────────────────────────────
 # Uncomment the pair you want to test:
 
 data = {'csv_templates': ['data/CZ_makro_short.csv'],
         'yml_templates': ['src/templates/template.yml']}
+
+# filenames = glob.glob(args["data"] + "*.csv") + glob.glob(args["data"] + "*.xlsx")
 
 # data = {'csv_templates': ['data/Pollen_Nick/LV2_pollen_combined_wide.csv'],
 #         'yml_templates': ['data/Pollen_Nick/wide_template.yaml']}
@@ -56,19 +58,19 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
             databus['sites'] = result
             logfile = logging_response(databus['sites'], logfile)
         print(databus['sites'])
-        # logfile.append("=== GPUs ===")
-        # result = nh.safe_step("gpus", lambda: nv.valid_geopolitical_units(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['gpuid'] = result
-        #     logfile = logging_response(databus['gpuid'], logfile)
+        logfile.append("=== GPUs ===")
+        result = nh.safe_step("gpus", lambda: nv.valid_geopolitical_units(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['gpuid'] = result
+            logfile = logging_response(databus['gpuid'], logfile)
 
-        # logfile.append("=== CUs ===")
-        # result = nh.safe_step("collunits", lambda: nv.valid_collunit(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['collunits'] = result
-        #     logfile = logging_response(databus['collunits'], logfile)
+        logfile.append("=== CUs ===")
+        result = nh.safe_step("collunits", lambda: nv.valid_collunit(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['collunits'] = result
+            logfile = logging_response(databus['collunits'], logfile)
 
         # logfile.append("=== Speleothems ===")
         # result = nh.safe_step("speleothems", lambda: nv.valid_speleothem(
@@ -83,8 +85,8 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         # if result is not None:
         #     databus['external_speleo'] = result
         #     logfile = logging_response(databus['external_speleo'], logfile)
-
-        # logfile.append("=== AUs ===")
+    
+        # logfile.append("=== AUs ===")   
         # result = nh.safe_step("analysisunits", lambda: nv.valid_analysisunit(
         #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
         # if result is not None:
@@ -123,12 +125,12 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #         databus['chronologies'] = result
         #         logfile = logging_response(databus['chronologies'], logfile)
 
-        #     logfile.append("=== Chron Controls ===")
-        #     result = nh.safe_step("chron_controls", lambda: nv.valid_chroncontrols(
-        #         cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        #     if result is not None:
-        #         databus['chron_controls'] = result
-        #         logfile = logging_response(databus['chron_controls'], logfile)
+            # logfile.append("=== Chron Controls ===")
+            # result = nh.safe_step("chron_controls", lambda: nv.valid_chroncontrols(
+            #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+            # if result is not None:
+            #     databus['chron_controls'] = result
+            #     logfile = logging_response(databus['chron_controls'], logfile)
         
         # if "sisal" in filename.lower():
         #     logfile.append("=== Hiatus ===")
@@ -153,19 +155,19 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #         databus['sample_age'] = result
         #         logfile = logging_response(databus['sample_age'], logfile)
 
-        #     logfile.append("=== Geochron ===")
-        #     result = nh.safe_step("geochron", lambda: nv.valid_geochron(
-        #         cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        #     if result is not None:
-        #         databus['geochron'] = result
-        #         logfile = logging_response(databus['geochron'], logfile)
+            # logfile.append("=== Geochron ===")
+            # result = nh.safe_step("geochron", lambda: nv.valid_geochron(
+            #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+            # if result is not None:
+            #     databus['geochron'] = result
+            #     logfile = logging_response(databus['geochron'], logfile)
 
-        #     logfile.append("=== Geochron Control ===")
-        #     result = nh.safe_step("geochroncontrol", lambda: nv.valid_geochroncontrol(
-        #         cur=cur, databus=databus), logfile, conn)
-        #     if result is not None:
-        #         databus['geochroncontrol'] = result
-        #         logfile = logging_response(databus['geochroncontrol'], logfile)
+            # logfile.append("=== Geochron Control ===")
+            # result = nh.safe_step("geochroncontrol", lambda: nv.valid_geochroncontrol(
+            #     cur=cur, databus=databus), logfile, conn)
+            # if result is not None:
+            #     databus['geochroncontrol'] = result
+            #     logfile = logging_response(databus['geochroncontrol'], logfile)
         
         # if "210pb" in filename.lower():
         #     logfile.append("=== UTh Series ===")

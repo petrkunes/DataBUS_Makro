@@ -1,97 +1,118 @@
 apiVersion: neotoma v2.0
-headers: 2
+headers: 1
 kind: Development 
 metadata:
 # Constants
 - column: datasettypeid
   neotoma: ndb.datasettypes.datasettypeid
   required: true
-  value: speleothem
+  value: plant macrofossil
 - column: databaseid
   neotoma: 'ndb.datasetdatabases.databasename'
   required: true
-  value: SISAL
+  value: European Plant Macrofossil Database
 ### Sites
-- column: site_name
+- column: Naleziste
   neotoma: ndb.sites.sitename
   notes: name by author
   required: false
   rowwise: false
   type: string
-- column: elevation
+- column: Vyzkumy_nadmV
   neotoma: ndb.sites.altitude
   required: false
   rowwise: false
   type: float
-- column: notes
-  neotoma: ndb.sites.notes
-  notes: All notes in SISAL are at site level only.
-  required: false
-  rowwise: false
-  type: null
-- column: latitude
+# - column: notes
+#   neotoma: ndb.sites.notes
+#   notes: All notes in SISAL are at site level only.
+#   required: false
+#   rowwise: false
+#   type: null
+- column: WGS_Y
   neotoma: ndb.sites.geog.latitude
   notes: number
   notes ii: Link as a spatial object.
   required: false
   rowwise: false
-  schema: sisal
-  table: Site
   type: float
-- column: longitude
+- column: WGS_X
   neotoma: ndb.sites.geog.longitude
   notes: Link as a spatial object.
   required: false
   rowwise: false
   type: float
-# ## Collection Units
-# - column: entity_name 
-#   neotoma: ndb.collectionunits.handle
-#   notes: name by author
-#   overwrite: true
-#   required: false
-#   rowwise: false
-#   type: string
+- column: lokalita
+  neotoma: ndb.sites.sitedescription
+  required: false
+  rowwise: false
+  type: string
+- column: Stat_EN
+  neotoma: ndb.sitegeopolitical.geopoliticalunit1
+  overwrite: false
+  required: false
+  rowwise: false
+  type: string
+  vocab: [fixed]
+- column: Kraj
+  neotoma: ndb.sitegeopolitical.geopoliticalunit2
+  overwrite: false
+  required: false
+  rowwise: false
+  type: string
+  vocab: [fixed]
+- column: Okres
+  neotoma: ndb.sitegeopolitical.geopoliticalunit3
+  overwrite: false
+  required: false
+  rowwise: false
+  type: string
+  vocab: [fixed]
+- column: Katastr
+  neotoma: ndb.sitegeopolitical.geopoliticalunit4
+  overwrite: false
+  required: false
+  rowwise: false
+  type: string
+  vocab: [fixed]
+## Collection Units
+- column: Vzorky_Objekt 
+  neotoma: ndb.collectionunits.handle
+  notes: name by author
+  required: false
+  rowwise: false
+  type: string
+- column: instArch_date
+  neotoma: ndb.collectionunits.colldate
+  notes: name by author
+  required: false
+  rowwise: false
+  type: date
+- column: poznObj
+  neotoma: ndb.collectionunits.notes
+  notes: name by author
+  required: false
+  rowwise: false
+  type: text
+- column: objTyp_EN
+  neotoma: ndb.collectionunits.colltypeid
+  notes: name by author
+  required: false
+  rowwise: false
+  type: string
+- column: typNaleziste_EN
+  neotoma: ndb.collectionunits.depenvtid
+  notes: name by author
+  required: false
+  rowwise: false
+  type: string
+
 # - column: persist_id
 #   neotoma: ndb.collectionunits.collunitname
 #   notes: name by author
-#   overwrite: true
 #   required: false
 #   rowwise: false
 #   type: string
-# - column: persist_id
-#   neotoma: ndb.speleothemcollectionunits.persistid
-#   notes: name by author
-#   overwrite: true
-#   required: false
-#   rowwise: false
-#   type: string
-# - column: sisal_entity_id
-#   neotoma: ndb.speleothems.entityid
-#   notes: database level
-#   notes ii: Referencing the speleothem entity (not the core itself)
-#   required: false
-#   rowwise: false
-#   schema: sisal
-#   table: Entity
-#   type: int
-# - column: entity_name
-#   neotoma: ndb.speleothems.entityname
-#   notes: name by author
-#   required: false
-#   rowwise: false
-#   schema: sisal
-#   table: Entity
-#   type: string
-# - column: monitoring
-#   neotoma: ndb.speleothems.monitoring
-#   notes: yes or no question
-#   required: false
-#   rowwise: false
-#   schema: sisal
-#   table: Site
-#   type: null
-#   vocab: ['yes', 'no']
 # - column: rock_age
 #   neotoma: ndb.speleothems.rockageid
 #   notes: the actual rock age (geological age) from a dropdown list
@@ -163,21 +184,19 @@ metadata:
 #   type: null
 #   vocab: [limestone, dolomite, marble, dolomitic limestone, marly limestone, calcarenite,
 #     gypsum, mixed (add note to notes sheet), other (add note to notes sheet), unknown]  
-# - column: depth
+# - column: Vrstva
 #   neotoma: ndb.analysisunits.depth
 #   notes: number
 #   required: false
 #   rowwise: true
-#   schema: sisal
-#   table: Sample
+#   table: Vzorek
 #   type: float
-# - column: depth_sample
+# - column: podvzor
 #   neotoma: ndb.chroncontrols.depth
 #   notes: number
 #   required: false
 #   rowwise: true
-#   schema: sisal
-#   table: Sample
+#   table: Datace
 #   type: float
 # - column: sample_thickness
 #   neotoma: ndb.analysisunits.thickness
@@ -211,7 +230,7 @@ metadata:
 #   required: false
 #   rowwise: true
 #   type: string
-# ## Sample Ages
+## Sample Ages
 # - column: age_model_type
 #   neotoma: ndb.chronologies.agemodel
 #   notes: dropdown list option
@@ -244,11 +263,11 @@ metadata:
 #   required: false
 #   rowwise: false
 #   type: str
-# - column: agetype
-#   neotoma: ndb.geochronology.agetypeid
-#   required: false
-#   rowwise: false
-#   type: str
+- column: Age_type_ID
+  neotoma: ndb.geochronology.agetypeid
+  required: false
+  rowwise: false
+  type: str
 # - column: agetype
 #   neotoma: ndb.chroncontrols.agetypeid
 #   required: false
@@ -1320,18 +1339,17 @@ metadata:
 #     Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
 #       start of laminations, Event; end of laminations, other (add note to notes sheet),
 #     unknown]
-# - column: geochron_type
-#   neotoma: ndb.geochronology.geochrontypeid
-#   notes: dropdown list options
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: string
-#   vocab: [C14, MC-ICP-MS U/Th, ICP-MS U/Th Other, Alpha U/Th, TIMS, U/Th unspecified,
-#     Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
-#       start of laminations, Event; end of laminations, other (add note to notes sheet),
-#     unknown]
+- column: Datace_C14_EN
+  neotoma: ndb.geochronology.geochrontypeid
+  notes: dropdown list options
+  required: false
+  rowwise: true
+  table: Datace
+  type: string
+  vocab: [C14, MC-ICP-MS U/Th, ICP-MS U/Th Other, Alpha U/Th, TIMS, U/Th unspecified,
+    Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
+      start of laminations, Event; end of laminations, other (add note to notes sheet),
+    unknown]
 # - column: dating_id
 #   neotoma: ndb.chroncontrols.chroncontrolid
 #   notes: database level
@@ -1412,14 +1430,13 @@ metadata:
 #   table: Entity
 #   type: null
 #   vocab: [PDB, Vienna-PDB]
-# - column: lab_num
-#   neotoma: ndb.geochronology.labnumber
-#   notes: alphanumeric
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: string
+- column: labCislo
+  neotoma: ndb.geochronology.labnumber
+  notes: alphanumeric
+  required: false
+  rowwise: true
+  table: Datace
+  type: string
 # - column: land_use
 #   neotoma: ndb.speleothems.landusecovertypeid
 #   notes: 'actual land use type filled from dropddown list options by authors or from
@@ -1432,18 +1449,17 @@ metadata:
 #   type: null
 #   vocab: [water body, wetland, forest, farmland, pasture, concrete and built up, mixed
 #       (add note to notes sheet), other (add note to notes sheet), unknown]
-# - column: material_dated
-#   neotoma: ndb.geochronology.materialdated
-#   notes: dropdown list options
-#   notes ii: This is a free-form field. Maybe we should actually create a table for
-#     it?
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: string
-#   vocab: [calcite, aragonite, organic, mixed (add note to notes sheet), other (add
-#       note to notes sheet), unknown]
+- column: material
+  neotoma: ndb.geochronology.materialdated
+  notes: dropdown list options
+  notes ii: This is a free-form field. Maybe we should actually create a table for
+    it?
+  required: false
+  rowwise: true
+  table: Datace
+  type: string
+  vocab: [calcite, aragonite, organic, mixed (add note to notes sheet), other (add
+      note to notes sheet), unknown]
 # - column: publication_DOI
 #   formatorrange: Valid DOI regex
 #   neotoma: ndb.publications.doi
@@ -1467,33 +1483,29 @@ metadata:
 #   notes: database level
 #   required: false
 #   rowwise: true
-#   schema: sisal
 #   table: Original chronology
 #   type: null
-# - column: uncorr_age
-#   neotoma: ndb.geochronology.age
-#   notes: number
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: float
-# - column: uncorr_age_uncert_neg
-#   neotoma: ndb.geochronology.erroryounger
-#   notes: number
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: float
-# - column: uncorr_age_uncert_pos
-#   neotoma: ndb.geochronology.errorolder
-#   notes: number
-#   required: false
-#   rowwise: true
-#   schema: sisal
-#   table: Dating
-#   type: float
+- column: C14-BP
+  neotoma: ndb.geochronology.age
+  notes: number
+  required: false
+  rowwise: true
+  table: Datace
+  type: float
+- column: stDevC14
+  neotoma: ndb.geochronology.erroryounger
+  notes: number
+  required: false
+  rowwise: true
+  table: Datace
+  type: float
+- column: stDevC14
+  neotoma: ndb.geochronology.errorolder
+  notes: number
+  required: false
+  rowwise: true
+  table: Datace
+  type: float
 # - column: vegetation_type
 #   neotoma: ndb.speleothems.vegetationcovertypeid
 #   notes: 'actual vegetation type filled from dropddown list options by authors or
