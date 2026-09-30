@@ -184,13 +184,13 @@ metadata:
 #   type: null
 #   vocab: [limestone, dolomite, marble, dolomitic limestone, marly limestone, calcarenite,
 #     gypsum, mixed (add note to notes sheet), other (add note to notes sheet), unknown]  
-# - column: Vrstva
-#   neotoma: ndb.analysisunits.depth
-#   notes: number
-#   required: false
-#   rowwise: true
-#   table: Vzorek
-#   type: float
+- column: Vrstva
+  neotoma: ndb.analysisunits.depth
+  notes: number
+  required: false
+  rowwise: true
+  table: Vzorek
+  type: float
 # - column: podvzor
 #   neotoma: ndb.chroncontrols.depth
 #   notes: number
@@ -263,24 +263,23 @@ metadata:
 #   required: false
 #   rowwise: false
 #   type: str
-- column: Age_type_ID
-  neotoma: ndb.geochronology.agetypeid
-  required: false
-  rowwise: false
-  type: str
+# - column: Age_type_ID
+#   neotoma: ndb.geochronology.agetypeid
+#   required: false
+#   rowwise: false
+#   type: str
 # - column: agetype
 #   neotoma: ndb.chroncontrols.agetypeid
 #   required: false
 #   rowwise: true
 #   type: str
-# - column: interp_age
+# - column: cal-C14
 #   neotoma: ndb.sampleages.age
 #   chronologyname: interp_author
 #   notes: number
 #   required: false
 #   rowwise: true
-#   schema: sisal
-#   table: SISAL chronology
+#   table: Datace
 #   type: float
 # - column: interp_age_uncert_neg
 #   neotoma: ndb.sampleages.ageyounger
@@ -1339,17 +1338,17 @@ metadata:
 #     Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
 #       start of laminations, Event; end of laminations, other (add note to notes sheet),
 #     unknown]
-- column: Datace_C14_EN
-  neotoma: ndb.geochronology.geochrontypeid
-  notes: dropdown list options
-  required: false
-  rowwise: true
-  table: Datace
-  type: string
-  vocab: [C14, MC-ICP-MS U/Th, ICP-MS U/Th Other, Alpha U/Th, TIMS, U/Th unspecified,
-    Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
-      start of laminations, Event; end of laminations, other (add note to notes sheet),
-    unknown]
+# - column: Datace_Carbon-14_EN
+#   neotoma: ndb.geochronology.geochrontypeid
+#   notes: dropdown list options
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: string
+#   vocab: [C14, MC-ICP-MS U/Th, ICP-MS U/Th Other, Alpha U/Th, TIMS, U/Th unspecified,
+#     Cross-dating, Multiple methods, Event; hiatus, Event; actively forming, Event;
+#       start of laminations, Event; end of laminations, other (add note to notes sheet),
+#     unknown]
 # - column: dating_id
 #   neotoma: ndb.chroncontrols.chroncontrolid
 #   notes: database level
@@ -1430,13 +1429,13 @@ metadata:
 #   table: Entity
 #   type: null
 #   vocab: [PDB, Vienna-PDB]
-- column: labCislo
-  neotoma: ndb.geochronology.labnumber
-  notes: alphanumeric
-  required: false
-  rowwise: true
-  table: Datace
-  type: string
+# - column: labCislo
+#   neotoma: ndb.geochronology.labnumber
+#   notes: alphanumeric
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: string
 # - column: land_use
 #   neotoma: ndb.speleothems.landusecovertypeid
 #   notes: 'actual land use type filled from dropddown list options by authors or from
@@ -1449,17 +1448,17 @@ metadata:
 #   type: null
 #   vocab: [water body, wetland, forest, farmland, pasture, concrete and built up, mixed
 #       (add note to notes sheet), other (add note to notes sheet), unknown]
-- column: material
-  neotoma: ndb.geochronology.materialdated
-  notes: dropdown list options
-  notes ii: This is a free-form field. Maybe we should actually create a table for
-    it?
-  required: false
-  rowwise: true
-  table: Datace
-  type: string
-  vocab: [calcite, aragonite, organic, mixed (add note to notes sheet), other (add
-      note to notes sheet), unknown]
+# - column: material
+#   neotoma: ndb.geochronology.materialdated
+#   notes: dropdown list options
+#   notes ii: This is a free-form field. Maybe we should actually create a table for
+#     it?
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: string
+#   vocab: [calcite, aragonite, organic, mixed (add note to notes sheet), other (add
+#       note to notes sheet), unknown]
 # - column: publication_DOI
 #   formatorrange: Valid DOI regex
 #   neotoma: ndb.publications.doi
@@ -1485,27 +1484,27 @@ metadata:
 #   rowwise: true
 #   table: Original chronology
 #   type: null
-- column: C14-BP
-  neotoma: ndb.geochronology.age
-  notes: number
-  required: false
-  rowwise: true
-  table: Datace
-  type: float
-- column: stDevC14
-  neotoma: ndb.geochronology.erroryounger
-  notes: number
-  required: false
-  rowwise: true
-  table: Datace
-  type: float
-- column: stDevC14
-  neotoma: ndb.geochronology.errorolder
-  notes: number
-  required: false
-  rowwise: true
-  table: Datace
-  type: float
+# - column: C14-BP
+#   neotoma: ndb.geochronology.age
+#   notes: number
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: float
+# - column: stDevC14
+#   neotoma: ndb.geochronology.erroryounger
+#   notes: number
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: float
+# - column: stDevC14
+#   neotoma: ndb.geochronology.errorolder
+#   notes: number
+#   required: false
+#   rowwise: true
+#   table: Datace
+#   type: float
 # - column: vegetation_type
 #   neotoma: ndb.speleothems.vegetationcovertypeid
 #   notes: 'actual vegetation type filled from dropddown list options by authors or

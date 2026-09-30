@@ -8,7 +8,7 @@ import DataBUS.neotomaHelpers as nh
 from DataBUS.neotomaHelpers.logging_dict import logging_response
 
 load_dotenv()
-connection = json.loads(os.getenv('PGDB_LOCAL'))
+connection = json.loads(os.getenv('PGDB_TANK'))
 
 # ── Configure your data pairs here ────────────────────────────────────────────
 # Uncomment the pair you want to test:
@@ -86,12 +86,12 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #     databus['external_speleo'] = result
         #     logfile = logging_response(databus['external_speleo'], logfile)
     
-        # logfile.append("=== AUs ===")   
-        # result = nh.safe_step("analysisunits", lambda: nv.valid_analysisunit(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['analysisunits'] = result
-        #     logfile = logging_response(databus['analysisunits'], logfile)
+        logfile.append("=== AUs ===")   
+        result = nh.safe_step("analysisunits", lambda: nv.valid_analysisunit(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['analysisunits'] = result
+            logfile = logging_response(databus['analysisunits'], logfile)
 
         # if "210pb" in filename.lower():
         #     logfile.append("=== Pb Models ===")
@@ -101,12 +101,12 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #         databus['pbmodel'] = result
         #         logfile = logging_response(databus['pbmodel'], logfile)
 
-        # logfile.append("=== Datasets ===")
-        # result = nh.safe_step("datasets", lambda: nv.valid_dataset(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['datasets'] = result
-        #     logfile = logging_response(databus['datasets'], logfile)
+        logfile.append("=== Datasets ===")
+        result = nh.safe_step("datasets", lambda: nv.valid_dataset(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['datasets'] = result
+            logfile = logging_response(databus['datasets'], logfile)
 
         # # only for SISAL and 210Pb
         # if "sisal" in filename.lower() or "210pb" in filename.lower():
@@ -140,12 +140,12 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #         databus['hiatus'] = result
         #         logfile = logging_response(databus['hiatus'], logfile)
 
-        # logfile.append("=== Samples ===")
-        # result = nh.safe_step("samples", lambda: nv.valid_sample(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['samples'] = result
-        #     logfile = logging_response(databus['samples'], logfile)
+        logfile.append("=== Samples ===")
+        result = nh.safe_step("samples", lambda: nv.valid_sample(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['samples'] = result
+            logfile = logging_response(databus['samples'], logfile)
 
         # if "node" not in filename.lower():
         #     logfile.append("=== Sample Ages ===")
@@ -191,12 +191,12 @@ for filename, yml in zip(data['csv_templates'], data['yml_templates']):
         #     databus['database'] = result
         #     logfile = logging_response(databus['database'], logfile)
 
-        # logfile.append("=== Data ===")
-        # result = nh.safe_step("data", lambda: nv.valid_data(
-        #     cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
-        # if result is not None:
-        #     databus['data'] = result
-        #     logfile = logging_response(databus['data'], logfile)
+        logfile.append("=== Data ===")
+        result = nh.safe_step("data", lambda: nv.valid_data(
+            cur=cur, yml_dict=yml_dict, csv_file=csv_file, databus=databus), logfile, conn)
+        if result is not None:
+            databus['data'] = result
+            logfile = logging_response(databus['data'], logfile)
 
         # if "210pb" in filename.lower():
         #     logfile.append("=== Data Uncertainty ===")
