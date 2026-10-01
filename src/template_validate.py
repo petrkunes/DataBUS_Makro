@@ -8,7 +8,7 @@ import DataBUS.neotomaHelpers as nh
 from DataBUS.neotomaHelpers.logging_dict import logging_response
 
 load_dotenv()
-connection = json.loads(os.getenv('PGDB_TANK'))
+connection = json.loads(os.getenv('PGDB_LOCAL'))
 
 # ── Configure your data pairs here ────────────────────────────────────────────
 # Uncomment the pair you want to test:
