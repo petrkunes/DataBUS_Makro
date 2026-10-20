@@ -7,7 +7,7 @@ affects, so this helper (read-only) lists each distinct taxon x element x units 
 
 Run (from the repo root, after `uv run src/prepare_makro.py`):
     uv run src/check_variables.py
-Writes data/CZ_makro_missing_variables.csv: one row per missing combination, `missing` says which part
+Writes data/validation_logs/CZ_makro_missing_variables.csv: one row per missing combination, `missing` says which part
 (taxon, element, units, or variable = all three exist but not together), plus the number of data rows
 and the samples affected.
 """
@@ -20,7 +20,7 @@ import psycopg2
 from dotenv import load_dotenv
 
 LONG = "data/CZ_makro_long.csv"
-OUT = "data/CZ_makro_missing_variables.csv"
+OUT = "data/validation_logs/CZ_makro_missing_variables.csv"
 
 QUERY = """
 SELECT (SELECT taxonid FROM ndb.taxa WHERE LOWER(taxonname) = LOWER(%(taxon)s)),
@@ -73,6 +73,7 @@ def main():
             )
     conn.close()
 
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["taxon", "element", "units", "missing", "n_rows", "samples"])

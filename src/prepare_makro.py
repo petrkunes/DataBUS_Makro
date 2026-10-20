@@ -1,4 +1,4 @@
-"""Add the columns DataBUS needs to data/CZ_makro_short.csv and write data/CZ_makro_long.csv.
+"""Add the columns DataBUS needs to data/original/CZ_makro_short.csv and write data/CZ_makro_long.csv.
 
 Added columns:
   * `taxon`: `Vysledky_Taxon`, with the Czech names in TAXON_MAP translated,
@@ -15,7 +15,7 @@ import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "CZ_makro_short.csv"
+RAW = ROOT / "data" / "original" / "CZ_makro_short.csv"
 LONG = ROOT / "data" / "CZ_makro_long.csv"
 
 # CONFIRM: the file does not state the units of sumaCele / sumaHmot; these are the working assumptions.
