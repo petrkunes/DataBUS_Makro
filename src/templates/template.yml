@@ -94,9 +94,8 @@ metadata:
   rowwise: false
   type: string
 ### Analysis units
-# FIX(makro): `groupby: true` makes the rows that share a depth one analysis unit (and one sample),
+# FIX: `groupby: true` makes the rows that share a depth one analysis unit (and one sample),
 # so the 118 rows give 27 analysis units instead of 118.
-# NOTE(makro): Vrstva ("layer") holds values 361 ... 650 and is used as the depth in cm. Confirm.
 - column: Vrstva
   neotoma: ndb.analysisunits.depth
   required: false
@@ -109,17 +108,15 @@ metadata:
   rowwise: true
   type: string
 ### Samples
-# FIX(makro): no sample name was mapped before.
 - column: Vzorky_Vzorek
   neotoma: ndb.samples.samplename
   required: false
   rowwise: true
   type: string
 ### Contacts
-# FIX(makro): the raw file has "Roleček J., BÚ AVČR Brno" / "Hájková P.", which nh.get_contacts cannot
+# FIX: the raw file has "Roleček J., BÚ AVČR Brno" / "Hájková P.", which nh.get_contacts cannot
 # match (it expects "Family, Initials."). prepare_makro.py rewrites them as "Roleček, J." and
 # "Hájková, P." into these columns.
-# Assumed roles: archVed (excavation lead) -> collector; Botanik (botanist) -> PI + sample analyst.
 - column: collector
   neotoma: ndb.collectors.contactname
   required: false
@@ -135,9 +132,7 @@ metadata:
   required: false
   rowwise: false
   type: string
-# One row = one measurement. valid_data reads the names in these columns (taxon, element and units
-# added by prepare_makro.py) and looks the variable up in ndb.variables. DataBUS never creates a variable; see
-# data/CZ_makro_missing_variables.csv for the ones that do not exist yet.
+# Data
 - column: value
   neotoma: ndb.data.value
   required: true
