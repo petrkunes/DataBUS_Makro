@@ -1,0 +1,28 @@
+taxon,element,units,missing,n_rows,samples
+Amblystegiaceae,"stem, leaf",grams,variable,2,"20,21"
+Betula humilis/nana,leaf,grams,taxon,5,"17,18,19,20,21"
+Betula humilis/nana,seed,NISP,taxon,4,"17,18,19,24"
+Betula humilis/nana,wood,grams,taxon,9,"16,17,18,19,20,21,22,23,24"
+Betula pendula/pubescens (alba-Typ),wood,grams,taxon,2,"07,08"
+Betula sp.,periderm,grams,variable,5,"07,08,09,16,17"
+Calliergon giganteum,"stem, leaf",grams,variable,2,"03,08"
+Calliergon stramineum,"stem, leaf",grams,variable,1,20
+Charcoal,charcoal,grams,variable,4,"09,10,22,27"
+Eriophorum vaginatum,vegetative,grams,variable,13,"03,04,05,06,07,08,09,10,11,12,13,14,16"
+Helodium blandowii,"stem, leaf",grams,variable,1,22
+Homalothecium nitens,"stem, leaf",grams,taxon,3,"18,19,21"
+Menyanthes trifoliata,vegetative,grams,variable,1,05
+Paludella squarrosa,"stem, leaf",grams,variable,2,"18,20"
+Phragmites australis,vegetative,grams,variable,3,"14,15,16"
+Picea abies,wood,grams,variable,1,10
+Polytrichum commune,"stem, leaf",NISP,variable,2,"08,10"
+Potamogeton pusillus,seed,NISP,variable,1,22
+Potentilla palustris,seed,NISP,variable,7,"13,14,16,17,18,19,22"
+Salix sp.,wood,grams,variable,2,"10,26"
+Sphagnum magellanicum,"stem, leaf",grams,variable,2,"16,17"
+Sphagnum recurvum agg,"stem, leaf",grams,taxon,6,"18,19,20,24,25,26"
+Sphagnum sect. sphagnum,"stem, leaf",grams,variable,2,"11,16"
+Sphagnum sp.,capsule,NISP,variable,4,"01,02,03,04"
+Sphagnum sp.,"stem, leaf",grams,variable,2,"08,10"
+Sphagnum subsecundum,"stem, leaf",grams,variable,3,"04,12,13"
+Vaccinium oxycoccos,leaf,grams,variable,2,"11,13"
