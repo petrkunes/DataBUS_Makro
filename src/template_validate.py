@@ -31,7 +31,8 @@ upload_dir = args["data"] + "upload_logs/"
 os.makedirs(validation_dir, exist_ok=True)
 os.makedirs(upload_dir, exist_ok=True)
 
-filenames = glob.glob(args["data"] + "*.csv") + glob.glob(args["data"] + "*.xlsx")
+input_dir = os.path.join(args["data"], "data-single")
+filenames = glob.glob(os.path.join(input_dir, "*.csv")) + glob.glob(os.path.join(input_dir, "*.xlsx"))
 yml_dict = nh.template_to_dict(args["template"])
 
 conn = psycopg2.connect(**connection, connect_timeout=5)

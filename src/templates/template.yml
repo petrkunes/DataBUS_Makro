@@ -46,7 +46,7 @@ metadata:
   type: string
 ### Geopolitical units
 # FIX(makro): valid_geopolitical_units only reads national_unit / subnational_unit_lv1..3.
-- column: Stat_EN
+- column: country
   neotoma: ndb.sitegeopolitical.national_unit
   required: false
   rowwise: false
@@ -67,7 +67,7 @@ metadata:
   rowwise: false
   type: string
 ### Collection units
-- column: Vzorky_Objekt
+- column: Vzorky_Vyzkum
   neotoma: ndb.collectionunits.handle
   notes: name by author
   required: false

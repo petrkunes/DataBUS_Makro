@@ -17,6 +17,8 @@ uv sync --extra dev   # Python 3.11.10, DataBUS from git
 uv run src/prepare_makro.py
 uv run src/check_variables.py
 # read-only: which taxa / variables are missing in Neotoma -> data/CZ_makro_missing_variables.csv
+uv run src/split_csv.py
+# automatically splits the whole database file into collection units –> data/data-single
 uv run src/template_validate.py
 # pass 1: validate only (always rolled back); writes data/CZ_makro_long.csv.valid.log
 uv run src/template_validate.py --upload true
@@ -40,4 +42,5 @@ The upload (pass 2) only commits once everything is valid.
 | `src/templates/template.yml` | DataBUS mapping; the depth has `groupby: true` so rows with the same depth are one sample |
 | `src/prepare_makro.py` | Adds the columns above: Czech taxon / element code -> Neotoma name, count/weight -> value + units, contact formatting. The translations are listed in `REPORT.md` |
 | `src/check_variables.py` | Read-only check of taxa and variables against Neotoma |
+| `src/split_csv.py` | Splits the entire database file into single collection units and places them in data/data-single |
 | `src/template_validate.py` | The two-pass validator/uploader |

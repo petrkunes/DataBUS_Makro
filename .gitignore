@@ -118,3 +118,4 @@ cython_debug/
 # Data folder
 data/
 *.md
+managedb.sh
