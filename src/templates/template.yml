@@ -1,5 +1,5 @@
 # DataBUS template for the Czech plant-macrofossil file.
-# Input file: data/CZ_makro_long.csv, produced from data/CZ_makro_short.csv by
+# Input file: data/Makro_CZSK_Export_whole_mod.csv, produced from data/original/MakroCZSK_Export_whole.csv by
 #   uv run src/prepare_makro.py
 # One row is one measurement. `groupby: true` on the depth makes rows with the same depth one
 # analysis unit / sample (needs DataBUS with group_rows).
@@ -28,7 +28,7 @@ metadata:
   neotoma: ndb.sites.altitude
   required: false
   rowwise: false
-  type: float
+  type: int
 - column: WGS_Y
   neotoma: ndb.sites.geog.latitude
   required: false
@@ -67,7 +67,7 @@ metadata:
   rowwise: false
   type: string
 ### Collection units
-- column: Vzorky_Vyzkum
+- column: Vzorky_Objekt
   neotoma: ndb.collectionunits.handle
   notes: name by author
   required: false
