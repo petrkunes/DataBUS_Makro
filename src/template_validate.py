@@ -24,7 +24,7 @@ from dotenv import load_dotenv
 
 args = nh.parse_arguments()
 load_dotenv()
-connection = json.loads(os.getenv("PGDB_TANK"))
+connection = json.loads(os.getenv("PGDB_LOCAL"))
 
 validation_dir = args["data"] + "validation_logs/"
 upload_dir = args["data"] + "upload_logs/"

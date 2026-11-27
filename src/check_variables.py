@@ -53,9 +53,9 @@ WHERE taxonid = %s AND variableelementid = %s AND variableunitsid = %s
 
 def main():
     load_dotenv()
-    raw = os.getenv("PGDB_TANK")
+    raw = os.getenv("PGDB_LOCAL")
     if raw is None:
-        raise SystemExit("PGDB_TANK is not set. Add it to .env (JSON passed to psycopg2.connect).")
+        raise SystemExit("PGDB_LOCAL is not set. Add it to .env (JSON passed to psycopg2.connect).")
     conn = psycopg2.connect(**json.loads(raw), connect_timeout=5)
     conn.set_session(readonly=True)  # this helper never writes
     cur = conn.cursor()
